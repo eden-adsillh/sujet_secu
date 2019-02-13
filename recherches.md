@@ -36,7 +36,7 @@ lecteur, sous forme de clé USB, et la carte intégrée contenant les clé.
 C'est un protocole d'accès à une smartcard par USB. Il permet d'utiliser la
 *smartcard* pour l'authentification, le chiffrement de données, la signature.
 
-CE protocole permet l'unification des pilotes de périphériques.
+Ce protocole permet l'unification des pilotes de périphériques.
 
 ## Documents
 
@@ -47,7 +47,7 @@ attaques par padding oracle avant de commencer. Puis
 l'[explication](./files/RR-7944.pdf) d'une faille dans des périphérique CCID.
 
 
-*[UIT]:Union Internationale des Télécommunication
-*[DN]:Distinguish Name
-*[CCID]:Chip Card Interface Device
-*[USB]:Universal Serial Bus
+*[UIT]: Union Internationale des Télécommunication
+*[DN]: Distinguish Name
+*[CCID]: Chip Card Interface Device
+*[USB]: Universal Serial Bus
