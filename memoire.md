@@ -84,6 +84,18 @@ parler des attaque sur les infrastructures à clé publiques.
 Le MD5 (pour Message Digest 5) est une fonction de hachage cryptographique
 permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères.
 
+Une fonction de hachage - pour être robuste - est sensé ne donner, pour chaque
+valeur en entrée différente, qu'une seule valeur en sortie (valeur de hashage).
+On dit d'une fonction de hachage cryptographique qu'elle est *résistante aux
+collisions* si il est difficile de trouver deux valeurs en entrée pour
+lesquelles la valeur en sortie est la même. Si le MD5 est aujourd'hui obsolèthe,
+c'est parce que cet algorithme n'est pas résistant aux collisions.
+
+Si il est possible de produire un message pour lequel la valeur de hashage est
+la même que la valeur de hashage d'une clé, il n'est plus necessaire de trouver
+la clé et il est possible, par exemple, d'usurper l'identité d'un certificat
+en présentant ce message à une autorité de certification.
+
 ## Bibliographie
 
 Stéphane Bortzmeyer *[RFC 5280: Internet X.509 Public Key Infrastructure
@@ -102,3 +114,5 @@ Marc Zaffagni *[CNETfrance.fr : Vers la fin des mots de passe ? WebAuthn est
 désormais un standard du web](https://www.cnetfrance.fr/news/vers-la-fin-des-mots-de-passe-webauthn-est-desormais-un-standard-du-web-39881531.htm)*
 
 W3C *[Web Authentication: An API for accessing Public Key Credentials](https://www.w3.org/TR/webauthn)*
+
+Wikipedia *[Attaque de collisions](https://fr.wikipedia.org/wiki/Attaque_de_collisions)*
