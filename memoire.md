@@ -84,7 +84,7 @@ parler des attaque sur les infrastructures à clé publiques.
 Le MD5 (pour Message Digest 5) est une fonction de hachage cryptographique
 permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères.
 
-Une fonction de hachage - pour être robuste - est sensé ne donner, pour chaque
+Une fonction de hachage - pour être robuste - est censé ne donner, pour chaque
 valeur en entrée différente, qu'une seule valeur en sortie (valeur de hashage).
 On dit d'une fonction de hachage cryptographique qu'elle est *résistante aux
 collisions* si il est difficile de trouver deux valeurs en entrée pour
