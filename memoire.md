@@ -55,7 +55,7 @@ le fonctionnement du chiffrement TLS.
 
 ### Une SmartCard?
 
-### Le Web plus accéssible aux authentifications par certificats
+### Le Web plus accessible aux authentifications par certificats
 
 Aujourd'hui, l'un des principaux défauts de l'authentification par certificats,
 c'est qu'elle n'est pas déployée largement : seul un petit nombre de services
@@ -88,11 +88,11 @@ Une fonction de hachage - pour être robuste - est censé ne donner, pour chaque
 valeur en entrée différente, qu'une seule valeur en sortie (valeur de hashage).
 On dit d'une fonction de hachage cryptographique qu'elle est *résistante aux
 collisions* si il est difficile de trouver deux valeurs en entrée pour
-lesquelles la valeur en sortie est la même. Si le MD5 est aujourd'hui obsolèthe,
+lesquelles la valeur en sortie est la même. Si le MD5 est aujourd'hui obsolète,
 c'est parce que cet algorithme n'est pas résistant aux collisions.
 
-Si il est possible de produire un message pour lequel la valeur de hashage est
-la même que la valeur de hashage d'une clé, il n'est plus necessaire de trouver
+S'il est possible de produire un message pour lequel la valeur de hashage est
+la même que la valeur de hashage d'une clé, il n'est plus nécessaire de trouver
 la clé et il est possible, par exemple, d'usurper l'identité d'un certificat
 en présentant ce message à une autorité de certification.
 
