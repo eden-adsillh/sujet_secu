@@ -53,7 +53,28 @@ Sur Internet, les différentes autorités de certifications assurent les rôles 
 PKI : Elle fournissent l'infrastructure pour gérer les certificats permettant
 le fonctionnement du chiffrement TLS.
 
-### Une SmartCard?
+## Une SmartCard?
+
+Maintenant que nous avons parlé de la norme X.509, nous allons parler de norre
+**startcard**. D'après Wikipedia ([source](l_sc-wiki)) :
+
+ Une carte à puce est une carte en matière plastique, voire en papier ou en
+ carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur1,
+ portant au moins un circuit intégré capable de contenir de l'information. Le
+ circuit intégré (la puce) peut contenir un microprocesseur capable de traiter
+ cette information, ou être limité à des circuits de mémoire non volatile et,
+ éventuellement, un composant de sécurité (carte mémoire). 
+
+Vous utilisez tous les jours une SmartCard : votre carte SIM, votre carte
+bancaire...
+
+### Création, stockage et utilisation de certificats
+
+Dans le cas qui nous intéresse, la carte à puce permet de stocker le certificat
+et de l'utiliser. Lors de son utilisation, un code PIN sera demandé afin de
+débloquer le certificat.
+
+Certaines Smartcard permettent la génération de certificats. 
 
 ### Le Web plus accessible aux authentifications par certificats
 
@@ -65,7 +86,7 @@ Cependant, supporté par le constat que les mots de passe perdent
 en efficacité, le standard WebAuthn (pour Web Authentication) a récemment été
 créé et publiée par le W3C. Ce standard définit une API destinée aux
 navigateurs, aux applications web et aux autres plateformes nécessitant une
-authentification forte basée sur clés pulbiques.
+authentification forte basée sur clés publiques.
 
 Les grands du Web ont déjà ont déjà mit en place le support de WebAuthn sur
 leurs outils : Windows 10, Android, Google Chrome, Mozilla Firefox,
