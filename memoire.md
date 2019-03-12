@@ -59,7 +59,7 @@ Maintenant que nous avons parlé de la norme X.509, nous allons parler de norre
 **startcard**. D'après Wikipedia ([source](l_sc-wiki)) :
 
  Une carte à puce est une carte en matière plastique, voire en papier ou en
- carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur1,
+ carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur,
  portant au moins un circuit intégré capable de contenir de l'information. Le
  circuit intégré (la puce) peut contenir un microprocesseur capable de traiter
  cette information, ou être limité à des circuits de mémoire non volatile et,
@@ -71,8 +71,9 @@ bancaire...
 ### Création, stockage et utilisation de certificats
 
 Dans le cas qui nous intéresse, la carte à puce permet de stocker le certificat
-et de l'utiliser. Lors de son utilisation, un code PIN sera demandé afin de
-débloquer le certificat.
+et de l'utiliser. Lors de son utilisation, un code PIN sera demandé, le
+certificat contenu pourra alors être utilisé pour s'authentifier, signer ou
+chiffrer.
 
 Certaines Smartcard permettent la génération de certificats. 
 
