@@ -55,7 +55,7 @@ le fonctionnement du chiffrement TLS.
 
 ## Une SmartCard?
 
-Maintenant que nous avons parlé de la norme X.509, nous allons parler de norre
+Maintenant que nous avons parlé de la norme X.509, nous allons parler de notre
 **startcard**. D'après Wikipedia ([source](l_sc-wiki)) :
 
  Une carte à puce est une carte en matière plastique, voire en papier ou en
@@ -67,6 +67,20 @@ Maintenant que nous avons parlé de la norme X.509, nous allons parler de norre
 
 Vous utilisez tous les jours une SmartCard : votre carte SIM, votre carte
 bancaire...
+
+Les smartcards qui nous intéressent ici contienne effectivement un estace de
+stockage, un microprocesseur et un coprocesseur pour accélérer les opérations
+cryptographiques. 
+
+![Fonctionnement d'une smartcard](./files/smartcard.svg)
+
+Comme vous pouvez le voir, il n'y a pas de connexion directe entre les contacts
+et la mémoire. Pour des raison évidente de sécurité, tout passe par le système
+d'exploitation de la carte. Il en existe une multitude : 
+
+ - Java Card
+ - MULTOS
+ - OpenPGP Card
 
 ### Création, stockage et utilisation de certificats
 
