@@ -58,19 +58,19 @@ le fonctionnement du chiffrement TLS.
 Maintenant que nous avons parlé de la norme X.509, nous allons parler de notre
 **startcard**. D'après Wikipedia ([source](l_sc-wiki)) :
 
- Une carte à puce est une carte en matière plastique, voire en papier ou en
- carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur,
- portant au moins un circuit intégré capable de contenir de l'information. Le
- circuit intégré (la puce) peut contenir un microprocesseur capable de traiter
- cette information, ou être limité à des circuits de mémoire non volatile et,
- éventuellement, un composant de sécurité (carte mémoire). 
+> Une carte à puce est une carte en matière plastique, voire en papier ou en
+> carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur,
+> portant au moins un circuit intégré capable de contenir de l'information. Le
+> circuit intégré (la puce) peut contenir un microprocesseur capable de traiter
+> cette information, ou être limité à des circuits de mémoire non volatile et,
+> éventuellement, un composant de sécurité (carte mémoire).
 
 Vous utilisez tous les jours une SmartCard : votre carte SIM, votre carte
 bancaire...
 
 Les smartcards qui nous intéressent ici contiennent un espace de stockage, un
 microprocesseur et un coprocesseur pour accélérer les opérations
-cryptographiques. 
+cryptographiques.
 
 ![Fonctionnement d'une smartcard](./files/smartcard.svg)
 
@@ -86,7 +86,7 @@ et de l'utiliser. Lors de son utilisation, un code PIN sera demandé, le
 certificat contenu pourra alors être utilisé pour s'authentifier, signer ou
 chiffrer.
 
-Certaines Smartcard permettent la génération de certificats. 
+Certaines Smartcard permettent la génération de certificats.
 
 ### Le Web plus accessible aux authentifications par certificats
 
@@ -107,6 +107,46 @@ encourager une adoption plus large de ce type d'authentification.
 
 ## Attaque sur les smartcard
 
+### Attaques par canal auxiliaire
+
+Les attaques par canal auxiliaire regroupe les attaques qui tentent d'exploiter
+des failles sur l'implémentation des procédures de sécurité plutôt que sur les
+procédures elles-mêmes. Voici une liste de types d'attaques par canal
+auxiliaire sur lesquels on va s'attarder car elles touchent les smartcard :
+
+#### Attaque par sondage
+
+Particulièrement invasive, elle consiste à détériorer suffisamment une puce pour
+avoir un accès physique aux bus et y lire les bits qui y passent. Il est à noter
+que cette attaque est très difficile à mettre en place car elle nécessite du
+matériel de pointe (oscilloscope très précis,
+chronométrage du passage des bits...), de la rigueur et de la précision sur la
+détérioration de la puce, etc.
+
+#### Analyse d'émanations électromagnétiques
+
+
+
+#### Analyse de consommation
+
+En fonction des opérations résolues par un processeur, sa consommation en
+énergie diffère. En étudiant les variations d'énergie utilisée par un lecteur de
+cartes, il est possible de trouver des indices sur la clé privée, sur un
+échantillon suffisant. Aujourd'hui, cette attaque peut être aisément
+contrecarrée en apposant du bruit sur le circuit ou en le blindant.
+
+#### Attaque par faute
+
+
+
+#### Attaque temporelle
+
+Le temps que met un algorithme à s'exécuter donne parfois des indices sur la
+constitution d'une clé entrée en paramètre dans cet algorithme, comme le nombre
+de bits à 1. A elle seule, cette attaque ne donne pas beaucoup d'informations,
+mais elle peut être combinée avec d'autres attaques pour en augmenter son
+efficacité.
+
 ### Attaques sur les PKI
 
 Même si elle ne touchent pas directement les smartcard, Il est intéressant de
@@ -125,9 +165,22 @@ lesquelles la valeur en sortie est la même. Si le MD5 est aujourd'hui obsolète
 c'est parce que cet algorithme n'est pas résistant aux collisions.
 
 S'il est possible de produire un message pour lequel la valeur de hashage est
-la même que la valeur de hashage d'une clé, il n'est plus nécessaire de trouver
-la clé et il est possible, par exemple, d'usurper l'identité d'un certificat
-en présentant ce message à une autorité de certification.
+la même que la valeur de hashage d'une clé privée, il n'est plus nécessaire de
+trouver la clé et il est possible, par exemple, d'usurper l'identité d'un
+certificat en présentant ce message à une autorité de certification.
+
+Trouver un message produisant le même hash qu'un autre message par force brute
+n'exploite pas vraiment cette vulnérabilité. Il existe un scénario qui tire
+mieux parti de la collision :
+1. L'attaquant créé au préalable deux documents, un "légitime", qu'il demandera
+à quelqu'un de signer et un autre qui produit le même hash MD5.
+2. L'autre partie, une autorité de certification par exemple, l'accepte et signe
+son hash MD5.
+3. L'attaquant peut envoyer le deuxième document en y joignant la signature du
+premier document, prétendant qu'il a été signé par l'autorité de certification.
+
+Ce scénario a été utilisé, en 2008, par des chercheurs pour créer une fausse
+autorité de certification.
 
 ## Bibliographie
 
@@ -148,4 +201,5 @@ désormais un standard du web](https://www.cnetfrance.fr/news/vers-la-fin-des-mo
 
 W3C *[Web Authentication: An API for accessing Public Key Credentials](https://www.w3.org/TR/webauthn)*
 
-Wikipedia *[Attaque de collisions](https://fr.wikipedia.org/wiki/Attaque_de_collisions)*
+Wikipedia *[Attaque de collisions](https://fr.wikipedia.org/wiki/Attaque_de_collisions)*,
+*[Attaque par canal auxiliaire](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)*
