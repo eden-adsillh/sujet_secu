@@ -123,10 +123,6 @@ matériel de pointe (oscilloscope très précis,
 chronométrage du passage des bits...), de la rigueur et de la précision sur la
 détérioration de la puce, etc.
 
-#### Analyse d'émanations électromagnétiques
-
-
-
 #### Analyse de consommation
 
 En fonction des opérations résolues par un processeur, sa consommation en
@@ -135,9 +131,20 @@ cartes, il est possible de trouver des indices sur la clé privée, sur un
 échantillon suffisant. Aujourd'hui, cette attaque peut être aisément
 contrecarrée en apposant du bruit sur le circuit ou en le blindant.
 
+#### Analyse d'émanations électromagnétiques
+
+Semblable à l'Analyse de consommation, à ceci prêt qu'on ne s'attache pas, cette
+fois ci à, l'énergie consommée mais au rayonnement électromagnétique émis par un
+appareil. A l'instar de la consommation en énergie, le rayonnement n'est pas
+le même en fonction des opérations exécutées par le terminal. L'étude du
+rayonnement thermique peut s'apparenter à une analyse d'émanations
+électromagnétiques.
+
 #### Attaque par faute
 
-
+Le principe ici est de provoquer des erreurs pour que le système réagisse de
+manière inhabituelle sur les opérations de chiffrement et laisse des indices
+sur la clé de chiffrement.
 
 #### Attaque temporelle
 
