@@ -161,33 +161,60 @@ parler des attaque sur les infrastructures à clé publiques.
 
 #### Collision MD5
 
-Le MD5 (pour Message Digest 5) est une fonction de hachage cryptographique
-permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères.
+Le MD5 (pour Message Digest 5) est un algorithme de hachage cryptographique
+permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères. Elle
+a été inventée par Ronald Rivets en 1991 pour succéder à MD4.
 
-Une fonction de hachage - pour être robuste - est censé ne donner, pour chaque
-valeur en entrée différente, qu'une seule valeur en sortie (valeur de hashage).
-On dit d'une fonction de hachage cryptographique qu'elle est *résistante aux
-collisions* si il est difficile de trouver deux valeurs en entrée pour
-lesquelles la valeur en sortie est la même. Si le MD5 est aujourd'hui obsolète,
-c'est parce que cet algorithme n'est pas résistant aux collisions.
+Il doit être considéré comme obsolète depuis 1996, années de découverte d'une
+faille dans l'algorithme ouvrant la voie à des collisions. En 2004 une équipe de
+chercheurs chinois menés par la mathématicienne Wang Xiaoyun [démontre la
+faisabilité][l_md5_2005] d'une collision complète. Mais cette attaque n'est pas
+encore suffisamment sophistiquée pour être utilisée sur un cas concret. Wang,
+Lenstra et de Wegner feront la [démonstration de leur attaque][l_md5_2006] sur
+deux certificats X.509 différents ayant la même signature MD5 en 2006.
 
-S'il est possible de produire un message pour lequel la valeur de hashage est
-la même que la valeur de hashage d'une clé privée, il n'est plus nécessaire de
-trouver la clé et il est possible, par exemple, d'usurper l'identité d'un
-certificat en présentant ce message à une autorité de certification.
+[l_md5_2005]:https://eprint.iacr.org/2004/199.pdf
+[l_md5_2006]:https://www.win.tue.nl/~bdeweger/CollidingCertificates/
 
-Trouver un message produisant le même hash qu'un autre message par force brute
-n'exploite pas vraiment cette vulnérabilité. Il existe un scénario qui tire
-mieux parti de la collision :
-1. L'attaquant créé au préalable deux documents, un "légitime", qu'il demandera
-à quelqu'un de signer et un autre qui produit le même hash MD5.
-2. L'autre partie, une autorité de certification par exemple, l'accepte et signe
-son hash MD5.
-3. L'attaquant peut envoyer le deuxième document en y joignant la signature du
-premier document, prétendant qu'il a été signé par l'autorité de certification.
+##### Attaque par collision
 
-Ce scénario a été utilisé, en 2008, par des chercheurs pour créer une fausse
-autorité de certification.
+Une attaque par collision est menée sur une fonction de hashage cryptographique
+afin trouver deux entrées différentes donnant lieux au même résultat. Comme la
+plupart des fonctions de signature électronique le font sur le hash d'un
+document plutôt que sur le document lui-même. Ainsi s'il est possible de
+produire deux documents avec le même hash, leurs signatures sera strictement
+la même. Il suffit alors d'envoyer à l'autorité de certification le document
+légitime et copier la signature obtenue sur le document frauduleux.
+
+##### Attaque par collision avec préfixe choisi
+
+Dans le cadre de certificats, les choses se compliquent un peu : c'est
+l'autorité de certification qui génère le certificat en fonction des
+informations contenues dans le CSR. L'attaquant doit alors manipuler les données
+contenues dans le CSR qu'il envoie et y intégrer des blocs de collision pour
+annuler les différences entre les hashes du certificats obtenu et celui forgé.
+Il va jouer sur le préfixe du CSR, d'où le nom de l'attaque.
+
+Ce type d'attaque n'est cependant pas aisé, l'attaquant devra anticiper
+certaines informations qui seront intégrées dans le certificat produit par
+l'autorité. Certaines pourront être influencées comme le champ CN, d'autres
+récupérées sur d'autre certificats signés par la même autorité (le contenu des
+champs *issuer* par exemple) et enfin d'autres devront être
+"devinées"[^n_devinees] (numéro de série du certificat et date d'expiration)
+
+[Une telle attaque a été démontrée][l_md5_2008] en décembre 2008 par une équipe
+de chercheurs menée par Sotirov et Stevens. Ils ont ainsi pu obtenir un
+certificat à même de signer n'importe quel autres certificats et reconnu par les
+principaux navigateurs de l'époque.
+
+Une technique similaire a été utilisée par le malware *Flame* découvert en 2012.
+Il usurpait une signature de code Microsoft pour se propager au travers de
+Windows Update.
+
+[l_md5_2008]:https://www.win.tue.nl/hashclash/rogue-ca/
+[^n_devinees]: Prédites serait plus adapté, dans l'attaque menée par Sotirov et
+Stevens, l'équipe de chercheurs a réussi prédire ces deux éléments en étudiant le
+fonctionnement de l'autorité de certification utilisée.
 
 ## Bibliographie
 
