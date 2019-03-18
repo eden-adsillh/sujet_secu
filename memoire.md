@@ -200,7 +200,7 @@ certaines informations qui seront intégrées dans le certificat produit par
 l'autorité. Certaines pourront être influencées comme le champ CN, d'autres
 récupérées sur d'autre certificats signés par la même autorité (le contenu des
 champs *issuer* par exemple) et enfin d'autres devront être
-"devinées"[^n_devinees] (numéro de série du certificat et date d'expiration)
+"devinées"[^n_devinees]  - numéro de série du certificat et date d'expiration -
 
 [Une telle attaque a été démontrée][l_md5_2008] en décembre 2008 par une équipe
 de chercheurs menée par Sotirov et Stevens. Ils ont ainsi pu obtenir un
