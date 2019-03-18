@@ -248,6 +248,12 @@ faut les découper, sinon on utilisera la technique du padding.
 
 ##### Le padding
 
+![Fonctionnement du padding](./files/pagging.svg)
+
+Dans notre exemple, notre bloc doit faire 128 bits mais les données ne
+représente que 104 bits [1]. Nous allons donc rajouter trois octets avec pour
+valeur hexadécimale `0x03` qui représente le nombre d'octets manquant [2].
+
 ## Bibliographie
 
 Stéphane Bortzmeyer *[RFC 5280: Internet X.509 Public Key Infrastructure
