@@ -212,9 +212,30 @@ Il usurpait une signature de code Microsoft pour se propager au travers de
 Windows Update.
 
 [l_md5_2008]:https://www.win.tue.nl/hashclash/rogue-ca/
-[^n_devinees]: Prédites serait plus adapté, dans l'attaque menée par Sotirov et
+[^n_devinees]:Prédites serait plus adapté, dans l'attaque menée par Sotirov et
 Stevens, l'équipe de chercheurs a réussi prédire ces deux éléments en étudiant le
 fonctionnement de l'autorité de certification utilisée.
+
+### Attaque par oracle de padding
+
+Ce type d'attaque a été mené avec succès sur différents périphériques
+cryptographiques par un équipe de recherche internationale. Leurs travaux a
+donne lieu ã une publication en avril 2012.
+
+Ils on pu ainsi extraire les clefs privées de la plupart des périphériques
+disponibles sur le marché quel que soit leurs marques.
+
+#### fonctionnement de cette attaque.
+
+##### Fonctionnement du chiffrement par bloc
+
+Avant de rentrer plus en détail dans le fonctionnement de l'attaque par oracle
+de padding, il est nécessaire d'expliquer le fonctionnement du chiffrement par
+bloc. Il exxiste une multitude de chiffrement par bloc, nous resterons sur le
+mode CBC *Cipher Block Chaining*.
+
+<schema>
+
 
 ## Bibliographie
 
