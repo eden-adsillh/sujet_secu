@@ -234,8 +234,19 @@ de padding, il est nécessaire d'expliquer le fonctionnement du chiffrement par
 bloc. Il exxiste une multitude de chiffrement par bloc, nous resterons sur le
 mode CBC *Cipher Block Chaining*.
 
-<schema>
+![Fonctionnement du chiffrement par bloc en mode CBC](./files/CBC.svg)
 
+Pour éviter l'apparition de motifs dans le bloc chiffré qui pourrait faciliter
+la création de "dictionnaire de code", le mode *CBC* utilise le précédent bloc
+chiffré pour réaliser une opération booléenne avec le bloc actuel en clair avant
+de le chiffrer. Pour le premier bloc à envoyer, *CBC* utilise un vecteur
+d'initialisation.
+
+Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
+taille de donnée définie en entrée. Si les données sont trop importante, il
+faut les découper, sinon on utilisera la technique du padding.
+
+##### Le padding
 
 ## Bibliographie
 
