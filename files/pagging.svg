@@ -6,11 +6,35 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg8"
    version="1.1"
    viewBox="0 0 435.13284 144.2607"
    height="144.2607mm"
-   width="435.13284mm">
+   width="435.13284mm"
+   sodipodi:docname="pagging.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3180"
+     inkscape:window-height="1700"
+     id="namedview931"
+     showgrid="false"
+     inkscape:zoom="1.3589959"
+     inkscape:cx="822.29829"
+     inkscape:cy="272.61864"
+     inkscape:window-x="6"
+     inkscape:window-y="90"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg8" />
   <title
      id="title1517">CBC Padding</title>
   <defs
@@ -722,30 +746,28 @@
      cx="59.710625"
      cy="128.40491"
      r="10.326617" />
-  <text
-     id="text3898"
-     y="133.70311"
-     x="55.019024"
+  <g
+     aria-label="1"
      style="font-style:normal;font-weight:normal;font-size:15.35711765px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.38392791"
-     xml:space="preserve"><tspan
+     id="text3898">
+    <path
+       d="m 61.039014,132.35168 v -9.24498 h -1.520355 l -3.255709,1.99642 0.737142,1.19786 2.334282,-1.42821 v 7.47891 h -2.579996 v 1.35143 h 6.403918 v -1.35143 z"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Medium';fill:#4d4d4d;fill-opacity:1;stroke-width:0.38392791"
-       y="133.70311"
-       x="55.019024"
-       id="tspan3896">1</tspan></text>
+       id="path933" />
+  </g>
   <circle
      r="10.326617"
      cy="128.40491"
      cx="242.00858"
      id="circle3900"
      style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#de6a66;stroke-width:1.0583334;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <text
-     xml:space="preserve"
+  <g
+     aria-label="2"
      style="font-style:normal;font-weight:normal;font-size:15.35711765px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.38392791"
-     x="237.31699"
-     y="133.70311"
-     id="text3904"><tspan
-       id="tspan3902"
-       x="237.31699"
-       y="133.70311"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Medium';fill:#4d4d4d;fill-opacity:1;stroke-width:0.38392791">2</tspan></text>
+     id="text3904">
+    <path
+       d="m 241.49412,122.8917 c -1.53571,0 -2.56464,0.58357 -3.37856,1.62785 l 1.10571,0.86 c 0.62964,-0.76785 1.19785,-1.10571 2.15,-1.10571 1.07499,0 1.71999,0.66036 1.71999,1.72 0,1.55107 -0.9675,2.74892 -4.7607,6.40391 v 1.30536 h 6.5882 l 0.18428,-1.38214 h -4.80677 c 3.39392,-3.07142 4.56106,-4.57642 4.56106,-6.43463 0,-1.65857 -1.21321,-2.99464 -3.36321,-2.99464 z"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Medium';fill:#4d4d4d;fill-opacity:1;stroke-width:0.38392791"
+       id="path936" />
+  </g>
 </svg>
