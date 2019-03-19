@@ -5,28 +5,27 @@ L'authentification par smartcard et Infrastructure par clé publique
 
 Depuis toujours, l'authentification sur des systèmes informatique est
 principalement régie par l'utilisation du couple identifiant / mot de passe.
-C'est pourtant un facteur d'identification peu fiables : utilisation du même mot
-de passe pour plusieurs - voir tous les - services, mot de passe faible, progrès
-technique rendant leur cassage plus efficaces etc. Dans un communiqué de presse
-du W3C et de l'Alliance FIDO :
+C'est pourtant un facteur d'identification peu fiable : utilisation du même mot
+de passe pour plusieurs - voir tous les - service(s), faible, progrès techniques
+rendant leur cassage plus efficaces etc. Dans un communiqué de presse du W3C et
+de l'Alliance FIDO :
 
- Les mots de passe volés, faibles ou par défaut
- sont à l'origine de 81% des atteintes à la protection des données.
+> Les mots de passe volés, faibles ou par défaut
+> sont à l'origine de 81% des atteintes à la protection des données.
 
-Il existe des solution pour pallier cette faiblesse, avec notamment
+Il existe des solutions pour pallier ces faiblesses, avec notamment
 l'introduction d'un ou plusieurs autres facteurs d'authentification (TOTP, SMS
 etc.), ou les gestionnaires de mots de passe (keepass, LastPass ...).
 
-L'authentification par certificats semble être une alternative
-intéressante au traditionnel mot de passe. Nous allons dans ce mémoire parler de
-la norme X.509, des infrastructures à clefs publiques, des smartcards et des
-attaques connues.
+L'authentification par certificats semble être une alternative intéressante aux
+traditionnels mots de passe. Nous allons dans ce mémoire parler de la norme
+X.509, des infrastructures à clefs publiques, des smartcards et des attaques
+connues.
 
 ## La norme X.509
 
-La norme X.509 régissant les formats les format pour les certificats à clé
-publique. Elle est définie par l'Union Internationale des Télécommunications et
-établie :
+La norme X.509 régissant les formats pour les certificats à clé publique. Elle
+est définie par l'Union Internationale des Télécommunications et établie :
 
  - Le **format de certificat**
  - La **liste de révocation** des certificats
@@ -47,7 +46,7 @@ humain, matériels ou logiciels, destinés à gérer les clefs publiques des
 utilisateurs d'un système.
 
 Cette infrastructure est utilisée pour créer, gérer, distribuer et révoquer des
-certificats
+certificats.
 
 #### La PKI elle va te crypter l'Internet du digital
 
@@ -58,7 +57,7 @@ le fonctionnement du chiffrement TLS.
 ## Une SmartCard?
 
 Maintenant que nous avons parlé de la norme X.509, nous allons parler de notre
-**startcard**. D'après Wikipedia ([source](l_sc-wiki)) :
+**startcard**. D'après Wikipédia ([source](l_sc-wiki)) :
 
 > Une carte à puce est une carte en matière plastique, voire en papier ou en
 > carton, de quelques centimètres de côté et moins d'un millimètre d'épaisseur,
@@ -95,18 +94,18 @@ Certaines smartcards permettent la génération de certificats.
 PKCS pour *Public Key Cryptographics Standard* est un ensemble de spécifications
 portées au départ par la Société *RSA Security* afin d'implanter les techniques
 liées à la cryptographie par clé publique. Par la suite, beaucoup de ces
-spécifications sont devenues des standard par le biais de RFC écrite par le
+spécifications sont devenues des standard par le biais de RFC écrites par le
 groupe de travail PKIX[^n_pkix] de l'IETF.
 
 Les plus utiles ici sont :
 
  - **PKCS#7** : standard de syntaxe de message cryptographiques, normalisé par
      les RFC 2315 et 5653.
- - **PKCS#11** : API définissant une interface générique pour les périphériaues
+ - **PKCS#11** : API définissant une interface générique pour les périphériques
      cryptographiques.
 
 [^n_pkix]:Public Key Infrastructure X.509, groupe de travail de l'IETF dédié aux
-  intrastructures à clé publiques
+  infrastructures à clé publiques
 
 ### Le Web plus accessible aux authentifications par certificats
 
@@ -114,11 +113,11 @@ Aujourd'hui, l'un des principaux défauts de l'authentification par certificats,
 c'est qu'elle n'est pas déployée largement : seul un petit nombre de services
 l'utilisent.
 
-Cependant, supporté par le constat que les mots de passe perdent
-en efficacité, le standard WebAuthn (pour Web Authentication) a récemment été
-créé et publiée par le W3C. Ce standard définit une API destinée aux
-navigateurs, aux applications web et aux autres plateformes nécessitant une
-authentification forte basée sur clés publiques.
+Cependant, supporté par le constat que les mots de passe perdent en efficacité,
+le standard WebAuthn - pour *Web Authentication* - a récemment été créé et
+publiée par le W3C. Ce standard définit une API destinée aux navigateurs, aux
+applications web et aux autres plateformes nécessitant une authentification
+forte basée sur clés publiques.
 
 Les grands du Web ont déjà ont déjà mit en place le support de WebAuthn sur
 leurs outils : Windows 10, Android, Google Chrome, Mozilla Firefox,
@@ -129,10 +128,11 @@ encourager une adoption plus large de ce type d'authentification.
 
 ### Attaques par canal auxiliaire
 
-Les attaques par canal auxiliaire regroupe les attaques qui tentent d'exploiter
-des failles sur l'implémentation des procédures de sécurité plutôt que sur les
-procédures elles-mêmes. Voici une liste de types d'attaques par canal
-auxiliaire sur lesquels on va s'attarder car elles touchent les smartcard :
+Les attaques par canal auxiliaire regroupe les attaques qui tentent
+**d'exploiter des failles sur l'implémentation** des procédures de sécurité
+plutôt que sur les procédures elles-mêmes. Voici une liste de types d'attaques
+par canal auxiliaire sur lesquels on va s'attarder car elles touchent les
+smartcard :
 
 #### Attaque par sondage
 
@@ -153,7 +153,7 @@ contrecarrée en apposant du bruit sur le circuit ou en le blindant.
 
 #### Analyse d'émanations électromagnétiques
 
-Semblable à l'Analyse de consommation, à ceci prêt qu'on ne s'attache pas, cette
+Semblable à l'analyse de consommation, à ceci prêt qu'on ne s'attache pas, cette
 fois ci à, l'énergie consommée mais au rayonnement électromagnétique émis par un
 appareil. A l'instar de la consommation en énergie, le rayonnement n'est pas
 le même en fonction des opérations exécutées par le terminal. L'étude du
@@ -176,14 +176,14 @@ efficacité.
 
 ### Attaques sur les PKI
 
-Même si elle ne touchent pas directement les smartcard, Il est intéressant de
+Même si elle ne touchent pas directement les smartcards, Il est intéressant de
 parler des attaque sur les infrastructures à clé publiques.
 
 #### Collision MD5
 
-Le MD5 (pour Message Digest 5) est un algorithme de hachage cryptographique
+Le MD5 pour *Message Digest 5* est un algorithme de hachage cryptographique
 permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères. Elle
-a été inventée par Ronald Rivets en 1991 pour succéder à MD4.
+a été inventée par **Ronald Rivets** en 1991 pour succéder à MD4.
 
 Il doit être considéré comme obsolète depuis 1996, années de découverte d'une
 faille dans l'algorithme ouvrant la voie à des collisions. En 2004 une équipe de
@@ -199,32 +199,35 @@ deux certificats X.509 différents ayant la même signature MD5 en 2006.
 ##### Attaque par collision
 
 Une attaque par collision est menée sur une fonction de hashage cryptographique
-afin trouver deux entrées différentes donnant lieux au même résultat. Comme la
-plupart des fonctions de signature électronique le font sur le hash d'un
-document plutôt que sur le document lui-même. Ainsi s'il est possible de
-produire deux documents avec le même hash, leurs signatures sera strictement
-la même. Il suffit alors d'envoyer à l'autorité de certification le document
-légitime et copier la signature obtenue sur le document frauduleux.
+afin trouver **deux entrées différentes donnant lieux au même résultat**. Comme
+la plupart des fonctions de signature électronique se font sur le *condensat*
+d'un document plutôt que sur le document lui-même. Ainsi s'il est possible de
+produire deux documents avec le même *condensat*[^n_hash], leurs signatures
+seront strictement identiques. Il suffit alors d'envoyer à l'autorité de
+certification le document légitime et **copier la signature obtenue sur le
+document frauduleux**.
+
+[^hash]:Le mot français pour *hash*
 
 ##### Attaque par collision avec préfixe choisi
 
 Dans le cadre de certificats, les choses se compliquent un peu : c'est
-l'autorité de certification qui génère le certificat en fonction des
+**l'autorité de certification qui génère le certificat** en fonction des
 informations contenues dans le CSR. L'attaquant doit alors manipuler les données
 contenues dans le CSR qu'il envoie et y intégrer des blocs de collision pour
-annuler les différences entre les hashes du certificats obtenu et celui forgé.
-Il va jouer sur le préfixe du CSR, d'où le nom de l'attaque.
+annuler les différences entre les *condensats* du certificats obtenu et celui
+forgé.  Il va jouer sur le préfixe du CSR, d'où le nom de l'attaque.
 
-Ce type d'attaque n'est cependant pas aisé, l'attaquant devra anticiper
-certaines informations qui seront intégrées dans le certificat produit par
-l'autorité. Certaines pourront être influencées comme le champ CN, d'autres
+Ce type d'attaque n'est cependant pas aisé, l'attaquant devra **anticiper
+certaines informations** qui seront intégrées dans le certificat produit par
+l'autorité. Certaines pourront être influencées comme le champ *CN*, d'autres
 récupérées sur d'autre certificats signés par la même autorité (le contenu des
 champs *issuer* par exemple) et enfin d'autres devront être
 "devinées" [^n_devinees]  - numéro de série du certificat et date d'expiration -
 
 [Une telle attaque a été démontrée][l_md5_2008] en décembre 2008 par une équipe
 de chercheurs menée par Sotirov et Stevens. Ils ont ainsi pu obtenir un
-certificat à même de signer n'importe quel autres certificats et reconnu par les
+certificat à même de signer n'importe quel autre certificat et reconnu par les
 principaux navigateurs de l'époque.
 
 Une technique similaire a été utilisée par le malware *Flame* découvert en 2012.
@@ -232,6 +235,7 @@ Il usurpait une signature de code Microsoft pour se propager au travers de
 Windows Update.
 
 [l_md5_2008]:https://www.win.tue.nl/hashclash/rogue-ca/
+
 [^n_devinees]:Prédites serait plus adapté, dans l'attaque menée par Sotirov et
 Stevens, l'équipe de chercheurs a réussi prédire ces deux éléments en étudiant le
 fonctionnement de l'autorité de certification utilisée.
@@ -248,14 +252,14 @@ disponibles sur le marché quel que soit leurs marques.
 La première démonstration pratique de cette attaque a été faite par Daniel
 Bleichenbacher alors chercheur en cryptographie chez *Bell Laboratories*
 
-#### fonctionnement de cette attaque
+#### Comment fonctionne t-elle?
 
-##### Fonctionnement du chiffrement par bloc
+##### Le chiffrement par bloc
 
 Avant de rentrer plus en détail dans le fonctionnement de l'attaque par oracle
 de padding, il est nécessaire d'expliquer le fonctionnement du chiffrement par
-bloc. Il exxiste une multitude de chiffrement par bloc, nous resterons sur le
-mode CBC *Cipher Block Chaining*.
+bloc. Il existe une multitude de façon de chiffrer par bloc, nous resterons sur
+le mode CBC *Cipher Block Chaining*.
 
 ![Fonctionnement du chiffrement par bloc en mode CBC](./files/CBC.svg)
 
@@ -283,7 +287,7 @@ valeur hexadécimale `0x03` qui représente le nombre d'octets manquant [2].
 
 ##### L'attaque par oracle de padding
 
-Une **oracle de padding** est un mechanisme prenant un bloc chiffré en entrée,
+Une **oracle de padding** est un mécanisme prenant un bloc chiffré en entrée,
 de déchiffre et averti l'utilisateur si le padding est correct ou non.
 
 Le chiffrement par bloc en mode *CBC* a un énorme défaut : l'intégrité des
@@ -347,16 +351,16 @@ comme les smartcards.
 ## Conclusion
 
 L'authentification par smartcards liée à une PKI est intéressante à bien des
-égard, réservé jusque là au monde de l'entreprise de par la complexité de
+égard, réservée jusque là au monde de l'entreprise de par la complexité de
 l'infrastructure à déployer. Mais l'apparition de périphériques comme les
 *Yubikey* et la nécessité de pallier aux problèmes des mots de passes pousse les
 entreprises touchant le grand public à trouver des solutions; *WebAuth* en est
-la preuve.
+la preuve (mais sans la partie PKI).
 
 Il est cependant utopique de penser que les smartcards résolvent tous les
 problèmes, bien au contraire. Nous avons vu qu'il est possible d'attaquer
 directement l'infrastructure de clés[^n_infra]. Mais il est est aussi possible
-d'attaquer le périphérique lui même. N'oublions pas que celui-ci est complexe,
+d'attaquer le périphérique lui même: n'oublions pas que celui-ci est complexe,
 équipé de plusieurs processeurs et d'un système d'exploitation, agrandissant la
 surface d'attaque[^n_yubikey].
 
