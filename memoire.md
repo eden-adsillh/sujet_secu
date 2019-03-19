@@ -249,10 +249,8 @@ Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
 taille de donnée définie en entrée. Si les données sont trop importante, il faut
 les découper, si elle sont plus petite on utilisera la technique du padding.
 
-Transposer sous forme d'équation cela donnerait : 
-
 ```
-txt_dechiffré[n] = dechiffrement(c_block[n]) ⊕ c_block[n-1]
+txt_dechiffre[n] = dechiffrer(c_block[n]) ⊕ c_block[n-1]
 ```
 
 ##### Le padding
@@ -265,6 +263,54 @@ valeur hexadécimale `0x03` qui représente le nombre d'octets manquant [2].
 
 ##### L'attaque par oracle de padding
 
+Une **oracle de padding** est un mechanisme prenant un bloc chiffré en entrée,
+de déchiffre et averti l'utilisateur si le padding est correct ou non.
+
+Le chiffrement par bloc en mode *CBC* a un énorme défaut : l'intégrité des
+messages n'est pas vérifiée. Du coup un attaquant peut modifier le résultat
+de `txt_dechiffre[n]` en modifiant `c_block[n-1]`, ou tout simplement en le
+forgeant à notre convenance.
+
+Prenons `X` comme bloc de chiffrement forgé pour l'occasion, et `c_block[a]`
+bloc de chiffrement à attaquer, nous pouvons écrire :
+
+```
+t_clair_hack[a] = dechiffrer(c_block[n]) ⊕ X
+```
+
+Nous savons aussi que :
+
+```
+c_block[a] = chiffrer(txt_clair[a] ⊕ c_block[a-1])
+```
+
+Donc on peut écrire :
+
+```
+t_clair_hack = dechiffrer(chiffrer(txt_clair[a] ⊕ c_block[a-1])) ⊕ X
+# et en simplifiant
+t_clair_hack = txt_clair[a] ⊕ c_block[a-1] ⊕ X
+```
+
+Cette équation se compose de deux éléments que nous avons en notre possession :
+`X` notre bloc forgé et `c_block[a-1]` notre avant-dernier bloc, et deux
+éléments inconnus : `t_clair_hack` le résultat en clair de la manipulation de
+notre attaque et `txt_clair[a]` le résultat du déchiffrement de `c_block[a]`.
+
+Il n'est plus question ici de chiffrement, mais de simples opérations booléenne.
+
+Comme nous avons accès à une **oracle de padding** nous n'avons qu'a tester
+toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
+(`0x01`). Dans le cadre de notre block de 16 octets :
+
+```
+0x01 = txt_clair[a][15] ⊕ c_block[a-1][15] ⊕ X[15]
+```
+
+Il ne nous reste plus qu'une inconnue, nous pouvons résoudre l'équation.
+
+Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
+en entier, et ainsi de suite...
 
 ## Bibliographie
 
