@@ -1,10 +1,10 @@
 ---
 title: Authentification par smartcard et PKI
-documentclass: scrbook
+documentclass: scrartcl
 author:
  - Luc Lauriou
  - Yorick Barbanneau
-fontsize: 12pt
+fontsize: 13pt
 mainfont: DejaVu Serif
 geometry: [top=1.5cm, bottom=3cm, left=3cm, right=3cm]
 header-includes:
