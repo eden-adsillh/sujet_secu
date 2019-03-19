@@ -225,7 +225,10 @@ donne lieu ã une publication en avril 2012.
 Ils on pu ainsi extraire les clefs privées de la plupart des périphériques
 disponibles sur le marché quel que soit leurs marques.
 
-#### fonctionnement de cette attaque.
+La première démonstration pratique de cette attaque a été faite par Daniel
+Bleichenbacher alors chercheur en cryptographie chez *Bell Laboratories*
+
+#### fonctionnement de cette attaque
 
 ##### Fonctionnement du chiffrement par bloc
 
@@ -243,8 +246,14 @@ de le chiffrer. Pour le premier bloc à envoyer, *CBC* utilise un vecteur
 d'initialisation.
 
 Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
-taille de donnée définie en entrée. Si les données sont trop importante, il
-faut les découper, sinon on utilisera la technique du padding.
+taille de donnée définie en entrée. Si les données sont trop importante, il faut
+les découper, si elle sont plus petite on utilisera la technique du padding.
+
+Transposer sous forme d'équation cela donnerait : 
+
+```
+txt_dechiffré[n] = dechiffrement(c_block[n]) ⊕ c_block[n-1]
+```
 
 ##### Le padding
 
@@ -253,6 +262,9 @@ faut les découper, sinon on utilisera la technique du padding.
 Dans notre exemple, notre bloc doit faire 128 bits mais les données ne
 représente que 104 bits [1]. Nous allons donc rajouter trois octets avec pour
 valeur hexadécimale `0x03` qui représente le nombre d'octets manquant [2].
+
+##### L'attaque par oracle de padding
+
 
 ## Bibliographie
 
