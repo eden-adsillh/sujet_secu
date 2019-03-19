@@ -312,6 +312,8 @@ Il ne nous reste plus qu'une inconnue, nous pouvons résoudre l'équation.
 Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
 en entier, et ainsi de suite...
 
+##### Et son utilisation contre les smartcard
+
 C'est bien entendu une version simplifiée de l'attaque par padding oracle, mais
 elle permet de comprendre son fonctionnement. Elle fut au centre des travaux de
 recherche menés par Romain Bardou, Riccardo Focardi, Yusuke Kawamoto, Lorenzo
