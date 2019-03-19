@@ -220,7 +220,7 @@ fonctionnement de l'autorité de certification utilisée.
 
 Ce type d'attaque a été mené avec succès sur différents périphériques
 cryptographiques par un équipe de recherche internationale. Leurs travaux a
-donne lieu ã une publication en avril 2012.
+donne lieu à une publication en avril 2012.
 
 Ils on pu ainsi extraire les clefs privées de la plupart des périphériques
 disponibles sur le marché quel que soit leurs marques.
@@ -246,8 +246,9 @@ de le chiffrer. Pour le premier bloc à envoyer, *CBC* utilise un vecteur
 d'initialisation.
 
 Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
-taille de donnée définie en entrée. Si les données sont trop importante, il faut
-les découper, si elle sont plus petite on utilisera la technique du padding.
+taille de donnée définie en entrée. Si les données sont trop importantes, il 
+faut les découper, si elle sont plus petites on utilisera la technique du
+padding.
 
 ```
 txt_dechiffre[n] = dechiffrer(c_block[n]) ⊕ c_block[n-1]
@@ -264,7 +265,7 @@ valeur hexadécimale `0x03` qui représente le nombre d'octets manquant [2].
 ##### L'attaque par oracle de padding
 
 Une **oracle de padding** est un mechanisme prenant un bloc chiffré en entrée,
-de déchiffre et averti l'utilisateur si le padding est correct ou non.
+le déchiffre et avertit l'utilisateur si le padding est correct ou non.
 
 Le chiffrement par bloc en mode *CBC* a un énorme défaut : l'intégrité des
 messages n'est pas vérifiée. Du coup un attaquant peut modifier le résultat
@@ -297,7 +298,8 @@ Cette équation se compose de deux éléments que nous avons en notre possession
 éléments inconnus : `t_clair_hack` le résultat en clair de la manipulation de
 notre attaque et `txt_clair[a]` le résultat du déchiffrement de `c_block[a]`.
 
-Il n'est plus question ici de chiffrement, mais de simples opérations booléenne.
+Il n'est plus question ici de chiffrement, mais de simples opérations 
+booléennes.
 
 Comme nous avons accès à une **oracle de padding** nous n'avons qu'a tester
 toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
