@@ -312,6 +312,18 @@ Il ne nous reste plus qu'une inconnue, nous pouvons résoudre l'équation.
 Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
 en entier, et ainsi de suite...
 
+C'est bien entendu une version simplifiée de l'attaque par padding oracle, mais
+elle permet de comprendre son fonctionnement. Elle fut au centre des travaux de
+recherche menés par Romain Bardou, Riccardo Focardi, Yusuke Kawamoto, Lorenzo
+Simionato, Graham Steel, et al. donnant lieu à une publication. Ces travaux
+permirent, en 2012, **l'extraction des clés privées** de beaucoup de
+périphériques de cryptographie (PKCS#11) de marques différentes. Les chercheurs
+ont par ailleurs largement améliorer les algorithmes de Bleichenbacher pour
+accélérer sensiblement les performances, surtout sur les appareils peu puissant
+comme les smartcards.
+
+## Conclusion
+
 ## Bibliographie
 
 Stéphane Bortzmeyer *[RFC 5280: Internet X.509 Public Key Infrastructure
