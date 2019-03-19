@@ -207,7 +207,7 @@ seront strictement identiques. Il suffit alors d'envoyer à l'autorité de
 certification le document légitime et **copier la signature obtenue sur le
 document frauduleux**.
 
-[^hash]:Le mot français pour *hash*
+[^n_hash]:Le mot français pour *hash*
 
 ##### Attaque par collision avec préfixe choisi
 
