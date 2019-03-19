@@ -3,17 +3,17 @@ L'authentification par certificats x.509 et smartcard
 
 ## Introduction
 
-Depuis toujours, l'authentification sur des systèmes informatique est
+Depuis toujours, l'authentification sur des systèmes informatiques est
 principalement régie par l'utilisation du couple identifiant / mot de passe.
-C'est pourtant un facteur d'identification peu fiables : utilisation du même mot
+C'est pourtant un facteur d'identification peu fiable : utilisation du même mot
 de passe pour plusieurs - voir tous les - services, mot de passe faible, progrès
-technique rendant leur cassage plus efficaces etc. Dans un communiqué de presse
+technique rendant leur cassage plus efficace etc. Dans un communiqué de presse
 du W3C et de l'Alliance FIDO, "les mots de passe volés, faibles ou par défaut
 sont à l'origine de 81% des atteintes à la protection des données".
 
 Il existe des solution pour pallier cette faiblesse, avec notamment
 l'introduction d'un ou plusieurs autres facteurs d'authentification (TOTP, SMS
-etc.), ou les gestionnaires de mots de passe (keepass, LastPass ...).
+etc.) ou les gestionnaires de mots de passe (keepass, LastPass, etc ...).
 
 L'authentification par certificats semble être une alternative
 intéressante au traditionnel mot de passe. Nous allons dans ce mémoire étudier
@@ -22,30 +22,32 @@ en œuvre et tenter d'exposer ses limites.
 
 ## La norme X.509
 
-La norme X.509 régissant les formats les format pour les certificats à clé
-publique. Elle est définie par l'Union Internationale des Télécommunications et
-établie :
+La norme X.509 régie les formats pour les certificats à clés
+publiques. Elle est définie par l'Union Internationale des Télécommunications et
+établie comme suit :
 
  - Le **format de certificat**
  - La **liste de révocation** des certificats
  - leurs **attributs**
- - un **algorithme de validation de chemin de certificats**
+ - un **algorithme de validation de chemin des certificats**
 
 Contrairement à OpenPGP qui repose sur une toile de confiance, X.509 repose sur
 les autorités de certifications : un tiers de confiance délivre les certificats
 et fournit les moyens de les vérifier.
 
 Les certificats X.509 sont donc composé de deux éléments : une partie publique
-et une partie privée. Ces certificats peuvent assurer plusieurs rôles
+et une partie privée. Ces certificats peuvent assurer plusieurs rôles.
+
+En voici quelques uns : 
 
 ### PKI - Infrastructure à clefs publiques
 
 Une infrastructure à clefs publiques est un ensemble d'éléments, qu'ils soient
-humain, matériels ou logiciels, destinés à gérer les clefs publiques des
+humains, matériels ou logiciels, destinés à gérer les clefs publiques des
 utilisateurs d'un système.
 
 Cette infrastructure est utilisée pour créer, gérer, distribuer et révoquer des
-certificats
+certificats.
 
 #### La PKI elle va te crypter l'Internet du digital
 
@@ -100,7 +102,7 @@ créé et publiée par le W3C. Ce standard définit une API destinée aux
 navigateurs, aux applications web et aux autres plateformes nécessitant une
 authentification forte basée sur clés publiques.
 
-Les grands du Web ont déjà ont déjà mit en place le support de WebAuthn sur
+Les grands du Web ont déjà mis en place le support de WebAuthn sur
 leurs outils : Windows 10, Android, Google Chrome, Mozilla Firefox,
 Microsoft Edge et Safari. L'apparition de ce standard va sans aucun doute
 encourager une adoption plus large de ce type d'authentification.
@@ -109,10 +111,10 @@ encourager une adoption plus large de ce type d'authentification.
 
 ### Attaques par canal auxiliaire
 
-Les attaques par canal auxiliaire regroupe les attaques qui tentent d'exploiter
+Les attaques par canal auxiliaire regroupent les attaques qui tentent d'exploiter
 des failles sur l'implémentation des procédures de sécurité plutôt que sur les
 procédures elles-mêmes. Voici une liste de types d'attaques par canal
-auxiliaire sur lesquels on va s'attarder car elles touchent les smartcard :
+auxiliaire sur lesquels on va s'attarder car elles touchent les smartcards :
 
 #### Attaque par sondage
 
@@ -126,7 +128,7 @@ détérioration de la puce, etc.
 #### Analyse de consommation
 
 En fonction des opérations résolues par un processeur, sa consommation en
-énergie diffère. En étudiant les variations d'énergie utilisée par un lecteur de
+énergie diffère. En étudiant les variations d'énergie utilisées par un lecteur de
 cartes, il est possible de trouver des indices sur la clé privée, sur un
 échantillon suffisant. Aujourd'hui, cette attaque peut être aisément
 contrecarrée en apposant du bruit sur le circuit ou en le blindant.
@@ -134,7 +136,7 @@ contrecarrée en apposant du bruit sur le circuit ou en le blindant.
 #### Analyse d'émanations électromagnétiques
 
 Semblable à l'Analyse de consommation, à ceci prêt qu'on ne s'attache pas, cette
-fois ci à, l'énergie consommée mais au rayonnement électromagnétique émis par un
+fois ci à l'énergie consommée mais au rayonnement électromagnétique émis par un
 appareil. A l'instar de la consommation en énergie, le rayonnement n'est pas
 le même en fonction des opérations exécutées par le terminal. L'étude du
 rayonnement thermique peut s'apparenter à une analyse d'émanations
@@ -156,8 +158,8 @@ efficacité.
 
 ### Attaques sur les PKI
 
-Même si elle ne touchent pas directement les smartcard, Il est intéressant de
-parler des attaque sur les infrastructures à clé publiques.
+Même si elle ne touchent pas directement les smartcards, Il est intéressant de
+parler des attaques sur les infrastructures à clé publique.
 
 #### Collision MD5
 
@@ -165,9 +167,9 @@ Le MD5 (pour Message Digest 5) est un algorithme de hachage cryptographique
 permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères. Elle
 a été inventée par Ronald Rivets en 1991 pour succéder à MD4.
 
-Il doit être considéré comme obsolète depuis 1996, années de découverte d'une
+Il doit être considéré comme obsolète depuis 1996, année de découverte d'une
 faille dans l'algorithme ouvrant la voie à des collisions. En 2004 une équipe de
-chercheurs chinois menés par la mathématicienne Wang Xiaoyun [démontre la
+chercheurs chinois menée par la mathématicienne Wang Xiaoyun [démontre la
 faisabilité][l_md5_2005] d'une collision complète. Mais cette attaque n'est pas
 encore suffisamment sophistiquée pour être utilisée sur un cas concret. Wang,
 Lenstra et de Wegner feront la [démonstration de leur attaque][l_md5_2006] sur
@@ -179,7 +181,7 @@ deux certificats X.509 différents ayant la même signature MD5 en 2006.
 ##### Attaque par collision
 
 Une attaque par collision est menée sur une fonction de hashage cryptographique
-afin trouver deux entrées différentes donnant lieux au même résultat. Comme la
+afin de trouver deux entrées différentes donnant lieux au même résultat. Comme la
 plupart des fonctions de signature électronique le font sur le hash d'un
 document plutôt que sur le document lui-même. Ainsi s'il est possible de
 produire deux documents avec le même hash, leurs signatures sera strictement
@@ -192,19 +194,19 @@ Dans le cadre de certificats, les choses se compliquent un peu : c'est
 l'autorité de certification qui génère le certificat en fonction des
 informations contenues dans le CSR. L'attaquant doit alors manipuler les données
 contenues dans le CSR qu'il envoie et y intégrer des blocs de collision pour
-annuler les différences entre les hashes du certificats obtenu et celui forgé.
+annuler les différences entre les hashes du certificat obtenu et celui forgé.
 Il va jouer sur le préfixe du CSR, d'où le nom de l'attaque.
 
 Ce type d'attaque n'est cependant pas aisé, l'attaquant devra anticiper
 certaines informations qui seront intégrées dans le certificat produit par
 l'autorité. Certaines pourront être influencées comme le champ CN, d'autres
-récupérées sur d'autre certificats signés par la même autorité (le contenu des
+récupérées sur d'autres certificats signés par la même autorité (le contenu des
 champs *issuer* par exemple) et enfin d'autres devront être
 "devinées" [^n_devinees]  - numéro de série du certificat et date d'expiration -
 
 [Une telle attaque a été démontrée][l_md5_2008] en décembre 2008 par une équipe
 de chercheurs menée par Sotirov et Stevens. Ils ont ainsi pu obtenir un
-certificat à même de signer n'importe quel autres certificats et reconnu par les
+certificat à même de signer n'importe quels autres certificats et reconnu par les
 principaux navigateurs de l'époque.
 
 Une technique similaire a été utilisée par le malware *Flame* découvert en 2012.
@@ -213,17 +215,17 @@ Windows Update.
 
 [l_md5_2008]:https://www.win.tue.nl/hashclash/rogue-ca/
 [^n_devinees]:Prédites serait plus adapté, dans l'attaque menée par Sotirov et
-Stevens, l'équipe de chercheurs a réussi prédire ces deux éléments en étudiant le
+Stevens, l'équipe de chercheurs a réussi à prédire ces deux éléments en étudiant le
 fonctionnement de l'autorité de certification utilisée.
 
 ### Attaque par oracle de padding
 
 Ce type d'attaque a été mené avec succès sur différents périphériques
-cryptographiques par un équipe de recherche internationale. Leurs travaux a
-donne lieu à une publication en avril 2012.
+cryptographiques par une équipe de recherche internationale. Leurs travaux a
+donné lieu à une publication en avril 2012.
 
-Ils on pu ainsi extraire les clefs privées de la plupart des périphériques
-disponibles sur le marché quel que soit leurs marques.
+Ils on ainsi pu extraire les clefs privées de la plupart des périphériques
+disponibles sur le marché quels que soient leurs marques.
 
 La première démonstration pratique de cette attaque a été faite par Daniel
 Bleichenbacher alors chercheur en cryptographie chez *Bell Laboratories*
@@ -232,9 +234,9 @@ Bleichenbacher alors chercheur en cryptographie chez *Bell Laboratories*
 
 ##### Fonctionnement du chiffrement par bloc
 
-Avant de rentrer plus en détail dans le fonctionnement de l'attaque par oracle
+Avant de rentrer plus en détails dans le fonctionnement de l'attaque par oracle
 de padding, il est nécessaire d'expliquer le fonctionnement du chiffrement par
-bloc. Il exxiste une multitude de chiffrement par bloc, nous resterons sur le
+bloc. Il existe une multitude de chiffrement par bloc, nous resterons sur le
 mode CBC *Cipher Block Chaining*.
 
 ![Fonctionnement du chiffrement par bloc en mode CBC](./files/CBC.svg)
@@ -247,7 +249,7 @@ d'initialisation.
 
 Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
 taille de donnée définie en entrée. Si les données sont trop importantes, il 
-faut les découper, si elle sont plus petites on utilisera la technique du
+faut les découper, si elle sont plus petites on utilisera alors la technique du
 padding.
 
 ```
@@ -301,7 +303,7 @@ notre attaque et `txt_clair[a]` le résultat du déchiffrement de `c_block[a]`.
 Il n'est plus question ici de chiffrement, mais de simples opérations 
 booléennes.
 
-Comme nous avons accès à une **oracle de padding** nous n'avons qu'a tester
+Comme nous avons accès à une **oracle de padding** nous n'avons qu'à tester
 toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
 (`0x01`). Dans le cadre de notre block de 16 octets :
 
@@ -312,7 +314,7 @@ toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
 Il ne nous reste plus qu'une inconnue, nous pouvons résoudre l'équation.
 
 Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
-en entier, et ainsi de suite...
+en entier et ainsi de suite...
 
 ## Bibliographie
 
