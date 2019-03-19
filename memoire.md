@@ -88,6 +88,24 @@ chiffrer.
 
 Certaines Smartcard permettent la génération de certificats.
 
+### Les "normes" PKCS
+
+PKCS pour *Public Key Cryptographics Standard* est un ensemble de spécifications
+portées au départ par la Société *RSA Security* afin d'implanter les techniques
+liées à la cryptographie par clé publique. Par la suite, beaucoup de ces
+spécifications sont devenues des standard par le biais de RFC écrite par le
+groupe de travail PKIX[^n_pkix] de l'IETF.
+
+Les plus utiles ici sont :
+
+ - **PKCS#7** : standard de syntaxe de message cryptographiques, normalisé par
+     les RFC 2315 et 5653.
+ - **PKCS#11** : API définissant une interface générique pour les périphériaues
+     cryptographiques.
+
+[^n_pkix]:Public Key Infrastructure X.509, groupe de travail de l'IETF dédié aux
+  intrastructures à clé publiques
+
 ### Le Web plus accessible aux authentifications par certificats
 
 Aujourd'hui, l'un des principaux défauts de l'authentification par certificats,
