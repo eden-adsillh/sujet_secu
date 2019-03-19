@@ -8,17 +8,19 @@ principalement régie par l'utilisation du couple identifiant / mot de passe.
 C'est pourtant un facteur d'identification peu fiables : utilisation du même mot
 de passe pour plusieurs - voir tous les - services, mot de passe faible, progrès
 technique rendant leur cassage plus efficaces etc. Dans un communiqué de presse
-du W3C et de l'Alliance FIDO, "les mots de passe volés, faibles ou par défaut
-sont à l'origine de 81% des atteintes à la protection des données".
+du W3C et de l'Alliance FIDO :
+
+ Les mots de passe volés, faibles ou par défaut
+ sont à l'origine de 81% des atteintes à la protection des données.
 
 Il existe des solution pour pallier cette faiblesse, avec notamment
 l'introduction d'un ou plusieurs autres facteurs d'authentification (TOTP, SMS
 etc.), ou les gestionnaires de mots de passe (keepass, LastPass ...).
 
 L'authentification par certificats semble être une alternative
-intéressante au traditionnel mot de passe. Nous allons dans ce mémoire étudier
-son fonctionnement, parler de son intégration dans GNU/Linux, parler de sa mise
-en œuvre et tenter d'exposer ses limites.
+intéressante au traditionnel mot de passe. Nous allons dans ce mémoire parler de
+la norme X.509, des infrastructures à clefs publiques, des smartcards et des
+attaques connues.
 
 ## La norme X.509
 
