@@ -1,5 +1,17 @@
-L'authentification par smartcard et Infrastructure par clé publique
--------------------------------------------------------------------
+---
+title: Authentification par smartcard et PKI
+documentclass: scrbook
+author:
+ - Luc Lauriou
+ - Yorick Barbanneau
+fontsize: 12pt
+mainfont: DejaVu Serif
+geometry: [top=1.5cm, bottom=3cm, left=3cm, right=3cm]
+header-includes:
+ - \definecolor{liens}{HTML}{de6a66}
+urlcolor: liens
+linkstyle: bold
+...
 
 ## Introduction
 
@@ -273,9 +285,9 @@ Contrairement au chiffrement de flux, le chiffrement par bloc nécessite une
 taille de donnée définie en entrée. Si les données sont trop importante, il faut
 les découper, si elle sont plus petite on utilisera la technique du padding.
 
-```
-txt_dechiffre[n] = dechiffrer(c_block[n]) ⊕ c_block[n-1]
-```
+$$
+cleartext[n] = decrypt(cblock[n]) \oplus cblock[n-1]
+$$
 
 ##### Le padding
 
@@ -292,34 +304,38 @@ de déchiffre et averti l'utilisateur si le padding est correct ou non.
 
 Le chiffrement par bloc en mode *CBC* a un énorme défaut : l'intégrité des
 messages n'est pas vérifiée. Du coup un attaquant peut modifier le résultat
-de `txt_dechiffre[n]` en modifiant `c_block[n-1]`, ou tout simplement en le
+de `cleartext[n]` en modifiant `cblock[n-1]`, ou tout simplement en le
 forgeant à notre convenance.
 
-Prenons `X` comme bloc de chiffrement forgé pour l'occasion, et `c_block[a]`
+Prenons `X` comme bloc de chiffrement forgé pour l'occasion, et `cblock[n]`
 bloc de chiffrement à attaquer, nous pouvons écrire :
 
-```
-t_clair_hack[a] = dechiffrer(c_block[n]) ⊕ X
-```
+$$
+cleartexthack[n] = decrypt(cblock[n]) \oplus X
+$$
 
 Nous savons aussi que :
 
-```
-c_block[a] = chiffrer(txt_clair[a] ⊕ c_block[a-1])
-```
+$$
+cblock[a] = encrypt(cleartextr[n] \oplus  cblock[n-1])
+$$
 
 Donc on peut écrire :
 
-```
-t_clair_hack = dechiffrer(chiffrer(txt_clair[a] ⊕ c_block[a-1])) ⊕ X
-# et en simplifiant
-t_clair_hack = txt_clair[a] ⊕ c_block[a-1] ⊕ X
-```
+$$
+cleartexthack = decrypt(encrypt(txt_clair[n] \oplus cblock[n-1])) \oplus X
+$$
+
+En simplifiant :
+
+$$
+cleartext = cleartext[a] \oplus cblock[n-1]  \oplus X
+$$
 
 Cette équation se compose de deux éléments que nous avons en notre possession :
-`X` notre bloc forgé et `c_block[a-1]` notre avant-dernier bloc, et deux
-éléments inconnus : `t_clair_hack` le résultat en clair de la manipulation de
-notre attaque et `txt_clair[a]` le résultat du déchiffrement de `c_block[a]`.
+`X` notre bloc forgé et `cblock[n-1]` notre avant-dernier bloc, et deux
+éléments inconnus : `cleartexthack` le résultat en clair de la manipulation de
+notre attaque et `cleartext[n]` le résultat du déchiffrement de `cblock[n]`.
 
 Il n'est plus question ici de chiffrement, mais de simples opérations booléenne.
 
@@ -327,11 +343,12 @@ Comme nous avons accès à une **oracle de padding** nous n'avons qu'a tester
 toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
 (`0x01`). Dans le cadre de notre block de 16 octets :
 
-```
-0x01 = txt_clair[a][15] ⊕ c_block[a-1][15] ⊕ X[15]
-```
+$$
+0x01 = cleartext[n][15] \oplus cblock[n-1][15] \oplus X[15]
+$$
 
-Il ne nous reste plus qu'une inconnue, nous pouvons résoudre l'équation.
+Il ne nous reste plus qu'une inconnue `cleartext[15]`, nous pouvons résoudre
+l'équation.
 
 Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
 en entier, et ainsi de suite...
