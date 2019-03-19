@@ -1,5 +1,5 @@
-L'authentification par certificats x.509 et smartcard
------------------------------------------------------
+L'authentification par smartcard et Infrastructure par clé publique
+-------------------------------------------------------------------
 
 ## Introduction
 
@@ -88,7 +88,7 @@ et de l'utiliser. Lors de son utilisation, un code PIN sera demandé, le
 certificat contenu pourra alors être utilisé pour s'authentifier, signer ou
 chiffrer.
 
-Certaines Smartcard permettent la génération de certificats.
+Certaines smartcards permettent la génération de certificats.
 
 ### Les "normes" PKCS
 
@@ -345,6 +345,32 @@ accélérer sensiblement les performances, surtout sur les appareils peu puissan
 comme les smartcards.
 
 ## Conclusion
+
+L'authentification par smartcards liée à une PKI est intéressante à bien des
+égard, réservé jusque là au monde de l'entreprise de par la complexité de
+l'infrastructure à déployer. Mais l'apparition de périphériques comme les
+*Yubikey* et la nécessité de pallier aux problèmes des mots de passes pousse les
+entreprises touchant le grand public à trouver des solutions; *WebAuth* en est
+la preuve.
+
+Il est cependant utopique de penser que les smartcards résolvent tous les
+problèmes, bien au contraire. Nous avons vu qu'il est possible d'attaquer
+directement l'infrastructure de clés[^n_infra]. Mais il est est aussi possible
+d'attaquer le périphérique lui même. N'oublions pas que celui-ci est complexe,
+équipé de plusieurs processeurs et d'un système d'exploitation, agrandissant la
+surface d'attaque[^n_yubikey].
+
+N'oublions pas aussi qu'un périphérique se vole; et si la plupart des smartcards
+sont résistante à l'ouverture par la force, une attaque ciblée couplée à de
+l'ingénierie sociale bien menée pour retrouver le code PIN reste possible.
+
+[^n_infra]:Google a publié le 23 février 2017 un article annonçant la première
+  collision sur du SHA1. https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html)
+
+[^n_yubikey]:La Yubikey 4, et d'autre périphériques cryptographiques sont
+  touchés par ROCAT, une faille touchant des librairies utilisées par des puces
+  de la marque Infineon Technologies AG et permettant de prédire la clé privée
+  grâce à la clé publique - CVE-2017-15361. https://crocs.fi.muni.cz/public/papers/rsa_ccs17
 
 ## Bibliographie
 
