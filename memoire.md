@@ -391,12 +391,12 @@ sont résistante à l'ouverture par la force, une attaque ciblée couplée à de
 l'ingénierie sociale bien menée pour retrouver le code PIN reste possible.
 
 [^n_infra]:Google a publié le 23 février 2017 un article annonçant la première
-  collision sur du SHA1. https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html)
+  collision sur du SHA1. [source](https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html)
 
 [^n_yubikey]:La Yubikey 4, et d'autre périphériques cryptographiques sont
   touchés par ROCAT, une faille touchant des librairies utilisées par des puces
   de la marque Infineon Technologies AG et permettant de prédire la clé privée
-  grâce à la clé publique - CVE-2017-15361. https://crocs.fi.muni.cz/public/papers/rsa_ccs17
+  grâce à la clé publique - CVE-2017-15361. [source](https://crocs.fi.muni.cz/public/papers/rsa_ccs17)
 
 ## Bibliographie
 
