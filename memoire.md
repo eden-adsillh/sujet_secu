@@ -312,28 +312,34 @@ de `cleartext[n]` en modifiant `cblock[n-1]`, ou tout simplement en le
 forgeant à notre convenance.
 
 Prenons `X` comme bloc de chiffrement forgé pour l'occasion, et `cblock[n]`
-bloc de chiffrement à attaquer, nous pouvons écrire :
+bloc de chiffrement à attaquer et `cleartexthack` le résultat du déchiffrement
+de `cblock[n]` avec notre `X` en vecteur d'initialisation, nous pouvons écrire :
 
 $$
-cleartexthack[n] = decrypt(cblock[n]) \oplus X
+cleartexthack = decrypt(cblock[n]) \oplus X
 $$
 
 Nous savons aussi que :
 
 $$
-cblock[a] = encrypt(cleartextr[n] \oplus  cblock[n-1])
+cblock[n] = encrypt(cleartext[n] \oplus  cblock[n-1])
 $$
 
 Donc on peut écrire :
 
 $$
-cleartexthack = decrypt(encrypt(txt_clair[n] \oplus cblock[n-1])) \oplus X
+cleartexthack = decrypt(encrypt(cleartext[n] \oplus cblock[n-1])) \oplus X
 $$
 
 En simplifiant :
 
 $$
-cleartext = cleartext[a] \oplus cblock[n-1]  \oplus X
+cleartexthack = cleartext[n] \oplus cblock[n-1]  \oplus X
+$$
+
+Que l'on peut aussi écrire
+$$
+cleartext[n] = cleartexthack \oplus cblock[n-1]  \oplus X
 $$
 
 Cette équation se compose de deux éléments que nous avons en notre possession :
@@ -349,10 +355,10 @@ toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
 (`0x01`). Dans le cadre de notre block de 16 octets :
 
 $$
-0x01 = cleartext[n][15] \oplus cblock[n-1][15] \oplus X[15]
+cleartext[n][15] = 0x01 \oplus cblock[n-1][15] \oplus X[15]
 $$
 
-Il ne nous reste plus qu'une inconnue `cleartext[15]`, nous pouvons résoudre
+Il ne nous reste plus qu'une inconnue `cleartext[n][15]`, nous pouvons résoudre
 l'équation.
 
 Il suffit de procéder ainsi pour les 16 octets de notre bloc pour le déchiffrer
