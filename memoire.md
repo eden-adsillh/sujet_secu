@@ -20,8 +20,7 @@ principalement régie par l'utilisation du couple identifiant / mot de passe.
 C'est pourtant un facteur d'identification peu fiable : utilisation du même mot
 de passe pour plusieurs - voir tous les - services, mot de passe faible, progrès
 technique rendant leur cassage plus efficace etc. Dans un communiqué de presse
-du W3C et de l'Alliance FIDO, "les mots de passe volés, faibles ou par défaut
-sont à l'origine de 81% des atteintes à la protection des données".
+du W3C et de l'Alliance FIDO :
 
 > Les mots de passe volés, faibles ou par défaut
 > sont à l'origine de 81% des atteintes à la protection des données.
@@ -50,10 +49,8 @@ Contrairement à OpenPGP qui repose sur une toile de confiance, X.509 repose sur
 les autorités de certifications : un tiers de confiance délivre les certificats
 et fournit les moyens de les vérifier.
 
-Les certificats X.509 sont donc composé de deux éléments : une partie publique
+Les certificats X.509 sont donc composés de deux éléments : une partie publique
 et une partie privée. Ces certificats peuvent assurer plusieurs rôles.
-
-En voici quelques uns : 
 
 ### PKI - Infrastructure à clefs publiques
 
@@ -197,7 +194,7 @@ parler des attaques sur les infrastructures à clé publique.
 #### Collision MD5
 
 Le MD5 pour *Message Digest 5* est un algorithme de hachage cryptographique
-permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères. Elle
+permettant d'obtenir l'empreinte d'un fichier / d'une chaine de caractères. Il
 a été inventée par **Ronald Rivets** en 1991 pour succéder à MD4.
 
 Il doit être considéré comme obsolète depuis 1996, année de découverte d'une
@@ -338,6 +335,7 @@ cleartexthack = cleartext[n] \oplus cblock[n-1]  \oplus X
 $$
 
 Que l'on peut aussi écrire
+
 $$
 cleartext[n] = cleartexthack \oplus cblock[n-1]  \oplus X
 $$
@@ -372,7 +370,7 @@ recherche menés par Romain Bardou, Riccardo Focardi, Yusuke Kawamoto, Lorenzo
 Simionato, Graham Steel, et al. donnant lieu à une publication. Ces travaux
 permirent, en 2012, **l'extraction des clés privées** de beaucoup de
 périphériques de cryptographie (PKCS#11) de marques différentes. Les chercheurs
-ont par ailleurs largement améliorer les algorithmes de Bleichenbacher pour
+ont par ailleurs largement amélioré les algorithmes de Bleichenbacher pour
 accélérer sensiblement les performances, surtout sur les appareils peu puissant
 comme les smartcards.
 
