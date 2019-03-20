@@ -292,7 +292,7 @@ $$
 
 ##### Le padding
 
-![Fonctionnement du padding](./files/pagging.svg)
+![Fonctionnement du padding](./files/padding.svg)
 
 Dans notre exemple, notre bloc doit faire 128 bits mais les données ne
 représente que 104 bits [1]. Nous allons donc rajouter trois octets avec pour
@@ -306,7 +306,7 @@ le déchiffre et avertit l'utilisateur si le padding est correct ou non.
 Le chiffrement par bloc en mode *CBC* a un énorme défaut : l'intégrité des
 messages n'est pas vérifiée. Du coup un attaquant peut modifier le résultat
 de `cleartext[n]` en modifiant `cblock[n-1]`, ou tout simplement en le
-forgeant à notre convenance.
+forgeant à sa convenance.
 
 Prenons `X` comme bloc de chiffrement forgé pour l'occasion, et `cblock[n]`
 bloc de chiffrement à attaquer et `cleartexthack` le résultat du déchiffrement
@@ -350,7 +350,7 @@ booléennes.
 
 Comme nous avons accès à une **oracle de padding** nous n'avons qu'à tester
 toutes les valeurs du dernier octet de `X` jusqu'à obtenir un padding correct
-(`0x01`). Dans le cadre de notre block de 16 octets :
+(`0x01`). Dans le cadre de notre bloc de 16 octets :
 
 $$
 cleartext[n][15] = 0x01 \oplus cblock[n-1][15] \oplus X[15]
